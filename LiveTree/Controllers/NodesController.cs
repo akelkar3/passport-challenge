@@ -20,8 +20,7 @@ namespace LiveTree.Controllers
         // GET: api/Nodes
         public IQueryable<Node> GetNodes()
         {
-            return db.Nodes
-                .Include(a=> a.Factory);
+            return db.Nodes;
         }
 
         // GET: api/Nodes/5

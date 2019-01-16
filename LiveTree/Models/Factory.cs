@@ -12,6 +12,7 @@ namespace LiveTree.Models
         public int Minimum { get; set; }
         public int Maximum { get; set; }
         public int NumberOfNodes { get; set; }
+        public List<Node> Nodes { get; set; }
     }
 
 }

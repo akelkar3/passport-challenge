@@ -11,7 +11,7 @@ namespace LiveTree.Models
         public string Name { get; set; }
         //foreign key
         public int FactoryId { get; set; }
-        //navigation object
-        public Factory Factory { get; set; }
-    }
+        //navigation objects
+        //public Factory Factory { get; set; }
+    }   
 }
