@@ -1,24 +1,44 @@
-﻿<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+﻿<div id="body .ng-cloak" ng-app="TreeApp">
+    <section id="content">
+        <div class="container" ng-controller="TreeCtrl">
+            <div class=" well" id="root">
+                <h3 class="text-muted ">Root <div class="btn btn-sm btn-success pull-right" ng-click="open(false)"><i class="glyphicon glyphicon-plus-sign "></i>&nbsp;<span class="">Add Factory</span></div></h3>
+
+                <!-- all factories will be looped here-->
+                <div class=" panel panel-info col-md-offset-1 " ng-repeat="factory in factories">
+                    <div class="panel-heading " id="headingOne">
+                        <h5 class="mb-0 tree-x">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#factory{{$index}}" aria-expanded="true" aria-controls="factory{{$index}}">
+                                {{factory.name}} <i class=".more-less glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                            <div class=" pull-right">
+                                <div class="btn btn-sm btn-success" ng-click="generateNode($index)">Generate Node</div> <div class="btn btn-circle btn-warning" ng-click="edit($index)"><i class="glyphicon glyphicon-pencil"></i></div><div class="btn  btn-circle btn-danger" ng-click="deleteFactory($index)"><i class="glyphicon glyphicon-trash"></i></div>
+                            </div>
+                        </h5>
+
+                    </div>
+                    <div id="factory{{$index}}" class="collapse" aria-labelledby="headingOne" data-parent="#factory{{$index}}">
+                        <div class="panel-body  row col-md-offset-1">
+                            <div class=" col-md-1   " ng-repeat="node in factory.nodes"><div class="badge bg-primary">{{node.name}}</div> </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
 </div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
-</div>
+@section scripts {
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/angular-toastr.js")
+    @Scripts.Render("~/Scripts/angular-toastr.tpls.js")
+    @Scripts.Render("~/Scripts/jquery.signalR-2.2.2.js")
+    @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/Scripts/angular-ui/ui-bootstrap.js")
+    @Scripts.Render("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
+    @Scripts.Render("~/Scripts/app/tree-controller.js")
+
+
+}

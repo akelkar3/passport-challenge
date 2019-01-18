@@ -18,6 +18,7 @@ namespace LiveTree.Controllers
         private LiveTreeContext db = new LiveTreeContext();
 
         // GET: api/Factories
+        [HttpGet]
         public IQueryable<Factory> GetFactories()
         {
             return db.Factories
@@ -26,6 +27,7 @@ namespace LiveTree.Controllers
 
         // GET: api/Factories/5
         [ResponseType(typeof(Factory))]
+        [HttpGet]
         public async Task<IHttpActionResult> GetFactory(int id)
         {
             Factory factory = await db.Factories.FindAsync(id);
@@ -39,6 +41,7 @@ namespace LiveTree.Controllers
 
         // PUT: api/Factories/5
         [ResponseType(typeof(void))]
+        [HttpPut]
         public async Task<IHttpActionResult> PutFactory(int id, Factory factory)
         {
             if (!ModelState.IsValid)
@@ -74,6 +77,7 @@ namespace LiveTree.Controllers
 
         // POST: api/Factories
         [ResponseType(typeof(Factory))]
+        [HttpPost]
         public async Task<IHttpActionResult> PostFactory(Factory factory)
         {
             if (!ModelState.IsValid)
@@ -84,11 +88,12 @@ namespace LiveTree.Controllers
             db.Factories.Add(factory);
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = factory.Id }, factory);
+            return Ok(factory);
         }
 
         // DELETE: api/Factories/5
         [ResponseType(typeof(Factory))]
+        [HttpDelete]
         public async Task<IHttpActionResult> DeleteFactory(int id)
         {
             Factory factory = await db.Factories.FindAsync(id);
@@ -96,7 +101,8 @@ namespace LiveTree.Controllers
             {
                 return NotFound();
             }
-
+            NodesController nodeController = new NodesController();
+            nodeController.DeleteMultipleNodes(id);
             db.Factories.Remove(factory);
             await db.SaveChangesAsync();
 
@@ -116,5 +122,31 @@ namespace LiveTree.Controllers
         {
             return db.Factories.Count(e => e.Id == id) > 0;
         }
+        
+        [HttpPost]
+        public IHttpActionResult GenerateNodes(Factory input)
+        {
+            List<Node> nodeList = new List<Node>();
+            Random _random = new Random();
+            for (int i = 0; i < input.NumberOfNodes; i++)
+            {
+                int nextName = _random.Next(input.Minimum, input.Maximum);
+                nodeList.Add(new Node { Name = nextName.ToString() ,FactoryId=input.Id});
+            }
+            NodesController nodeController = new NodesController();
+            nodeController.DeleteMultipleNodes(input.Id);
+           bool result= nodeController.AddMultipleNodes(nodeList);
+            if (result)
+            {
+                return Ok();
+            }
+            else
+            {
+                return InternalServerError(new Exception("cannot create all the nodes"));
+            }
+        }
+       
+       
+
     }
 }

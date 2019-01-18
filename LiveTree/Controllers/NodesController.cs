@@ -115,5 +115,37 @@ namespace LiveTree.Controllers
         {
             return db.Nodes.Count(e => e.Id == id) > 0;
         }
+        public bool AddMultipleNodes(List<Node> input)
+        {
+            try
+            {
+                db.Nodes.AddRange(input);
+
+                db.SaveChangesAsync();
+            }catch(Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool DeleteMultipleNodes(int id)
+        {
+            try
+            {
+                var nodes = db.Nodes
+                     .Where(q => q.FactoryId == id);
+
+                // assuming this is your DbSet
+                db.Nodes.RemoveRange(nodes);
+
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
+        
     }
 }

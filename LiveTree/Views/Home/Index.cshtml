@@ -1,24 +1,27 @@
-﻿<div id="bodyContainer" ng-app="TreeApp">
+﻿<div id="body .ng-cloak" ng-app="TreeApp">
     <section id="content">
         <div class="container" ng-controller="TreeCtrl">
-            <div class="accordion" id="root">
-                <!-- all factories will be looped here-->
-                <div class="card-body " ng-repeat="factory in factories">
-                    <div class="card-header  bg-info" id="headingOne">
-                        <h5 class="mb-0">
-                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#factory1" aria-expanded="true" aria-controls="factory1">
-                               {{factory.name}}
-                            </button>
-                        </h5>
-                        <div class="pull-right">
-                        <div ng-click="editFactory($index)">edit</div><div ng-click="deleteFactory($index)">delete</div>
-                        </div>
-                    </div>
-                    <div id="factory1" class="collapse" aria-labelledby="headingOne" data-parent="#root">
-                        <div class="card-body ">
-                            <div class="badge offset-1" ng-repeat="node in factory.nodes">{{node.name}} </div>
+            <div class=" well" id="root">
+                <h3 class="text-muted ">Root <div class="btn btn-sm btn-success pull-right" ng-click="open(false)"><i class="glyphicon glyphicon-plus-sign "></i>&nbsp;<span class="">Add Factory</span></div></h3>
 
-                          </div>
+                <!-- all factories will be looped here-->
+                <div class=" panel panel-info col-md-offset-1 " ng-repeat="factory in factories">
+                    <div class="panel-heading " id="headingOne">
+                        <h5 class="mb-0 tree-x">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#factory{{$index}}" aria-expanded="true" aria-controls="factory{{$index}}">
+                                {{factory.name}} <i class=".more-less glyphicon glyphicon-chevron-right"></i>
+                            </button>
+                            <div class=" pull-right">
+                                <div class="btn btn-sm btn-success" ng-click="generateNode($index)">Generate Node</div> <div class="btn btn-circle btn-warning" ng-click="edit($index)"><i class="glyphicon glyphicon-pencil"></i></div><div class="btn  btn-circle btn-danger" ng-click="deleteFactory($index)"><i class="glyphicon glyphicon-trash"></i></div>
+                            </div>
+                        </h5>
+
+                    </div>
+                    <div id="factory{{$index}}" class="collapse" aria-labelledby="headingOne" data-parent="#factory{{$index}}">
+                        <div class="panel-body  row col-md-offset-1">
+                            <div class=" col-md-1   " ng-repeat="node in factory.nodes"><div class="badge bg-primary">{{node.name}}</div> </div>
+
+                        </div>
                     </div>
                 </div>
 
@@ -31,5 +34,11 @@
     @Scripts.Render("~/Scripts/angular.js")
     @Scripts.Render("~/Scripts/angular-toastr.js")
     @Scripts.Render("~/Scripts/angular-toastr.tpls.js")
+    @Scripts.Render("~/Scripts/jquery.signalR-2.2.2.js")
+    @Scripts.Render("~/signalr/hubs")
+    @Scripts.Render("~/Scripts/angular-ui/ui-bootstrap.js")
+    @Scripts.Render("~/Scripts/angular-ui/ui-bootstrap-tpls.js")
     @Scripts.Render("~/Scripts/app/tree-controller.js")
+
+
 }

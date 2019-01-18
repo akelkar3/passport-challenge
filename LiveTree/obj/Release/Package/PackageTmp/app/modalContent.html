@@ -1,0 +1,70 @@
+﻿<div class="modal-header">
+    <h3 ng-if="!isEdit"> New Factory</h3>
+    <h3 ng-if="isEdit"> Edit Factory</h3>
+</div>
+<div class="modal-body">
+    <form name="factoryForm">
+        <div class="row">
+            <br />
+            <div class="col-md-2">
+                <p>
+                    Name:
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="text" ng-model="nameInput" ng-pattern="/^\w+$/" placeholder="Enter Name" class="form-control" id="name" name="name" required>
+                </div>
+            </div>
+            <small class="text-muted text-danger col-md-12" ng-show="factoryForm.name.$invalid && !factoryForm.name.$pristine" class="help-block">Name is required and should be alpha numeric.</small>
+
+            <div class="col-md-2">
+                <p>
+                    Nodes:
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="number" ng-model="numberOfNodesInput" placeholder="Enter Nodes" class="form-control" id="nodeVal" name="nodeVal" ng-min="1" ng-max="15" required>
+                </div>
+            </div>
+            <div class="text-muted text-danger col-md-12" ng-show="factoryForm.nodeVal.$invalid && !factoryForm.nodeVal.$pristine" class="help-block">Number of Nodes is required and has to be a number between 1-15.</div>
+
+        </div>
+
+        <div class="row">
+            <br />
+            <div class="col-md-2">
+                <p>
+                    Min:
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="number" ng-model="minimumInput" placeholder="Enter Minimum value" class="form-control" id="min" name="min" ng-max="maximumInput" required>
+
+                </div>
+            </div>
+            <small class="text-muted text-danger col-md-12" ng-show="factoryForm.min.$invalid && !factoryForm.min.$pristine" class="help-block">Minimum of range is required and has to be a number lesser than max.</small>
+
+            <div class="col-md-2">
+                <p>
+                    Max:
+                </p>
+            </div>
+            <div class="col-md-4">
+                <div class="input-group">
+                    <input type="number" ng-model="maximumInput" placeholder="Enter Maximum value" class="form-control" id="max" ng-min="minimumInput" name="max" required>
+
+                </div>
+            </div>
+            <small class="text-muted text-danger col-md-12" ng-show="factoryForm.max.$invalid && !factoryForm.max.$pristine" class="help-block">Maximum of range is required and has to be a number greater than max.</small>
+
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-if="!isEdit" ng-click="addFactory() " ng-disabled="factoryForm.$invalid">Save</button>
+    <button class="btn btn-primary" ng-if="isEdit" ng-click="editFactory()" ng-disabled="factoryForm.$invalid">Save</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+</div>

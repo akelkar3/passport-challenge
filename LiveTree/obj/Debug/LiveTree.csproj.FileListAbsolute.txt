@@ -90,3 +90,14 @@ F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\EntityFramework
 F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\EntityFramework.SqlServer.xml
 F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\obj\Debug\LiveTree.Migrations.Initial.resources
 F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\obj\Debug\LiveTree.csproj.GenerateResource.cache
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.AspNet.SignalR.Core.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.Security.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Owin.dll
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.AspNet.SignalR.Core.xml
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.xml
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\Anktariksh\Passport-Challenge\passport-challenge\LiveTree\bin\Microsoft.Owin.Security.xml

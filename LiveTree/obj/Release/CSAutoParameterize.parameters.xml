@@ -1,2 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters />
+<parameters>
+  <parameter name="LiveTreeContext-Web.config Connection String" description="LiveTreeContext Connection String used in web.config by the application to access the database." defaultValue="Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=LiveTreeContext-20190115232807; Integrated Security=True; MultipleActiveResultSets=True; AttachDbFilename=|DataDirectory|LiveTreeContext-20190115232807.mdf" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="F:\\Anktariksh\\Passport-Challenge\\passport-challenge\\LiveTree\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LiveTreeContext']/@connectionString" />
+  </parameter>
+  <parameter name="LiveTreeContext_DatabasePublish-Web.config Connection String" description="LiveTreeContext_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="LiveTreeContext_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="F:\\Anktariksh\\Passport-Challenge\\passport-challenge\\LiveTree\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LiveTreeContext_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>
