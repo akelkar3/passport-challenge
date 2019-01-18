@@ -126,6 +126,10 @@ namespace LiveTree.Controllers
         [HttpPost]
         public IHttpActionResult GenerateNodes(Factory input)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             List<Node> nodeList = new List<Node>();
             Random _random = new Random();
             for (int i = 0; i < input.NumberOfNodes; i++)

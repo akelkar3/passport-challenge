@@ -6,7 +6,7 @@ app.controller('TreeCtrl', function ($scope, $http, toastr, $uibModal) {
     $scope.getFactories = function () {
         $http.get("/api/factories/getFactories").then(function (data, status, headers, config) {
             $scope.factories = data.data;
-            toastr.success('GotData', 'Success', { closeButton: true });
+         //   toastr.success('GotData', 'Success', { closeButton: true });
         }, function (data, status, headers, config) {
             toastr.error('Something went wrong while getting factories', 'Error', { closeButton: true });
         });
